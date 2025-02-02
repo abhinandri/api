@@ -1,7 +1,8 @@
-
-import 'package:flutter/cupertino.dart';
+import 'package:amazone_prime_clone/view/costum_horzontal_listview.dart';
+import 'package:amazone_prime_clone/view/custome_text_gride.dart';
+import 'package:amazone_prime_clone/view/top10_language.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,6 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> bannerImages = [
+    'assets/images/Screenshot 2025-01-27 224255.png',
+    'assets/images/Screenshot 2025-01-29 200016.png'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +25,24 @@ class _HomePageState extends State<HomePage> {
           children: [
             Stack(
               children: [
-                // Background Container
-                Container(
-                  height: 450,
-                  width: double.infinity,
-                  color: const Color.fromARGB(255, 43, 162, 209),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 450,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 1.0,
+                  ),
+                  items: bannerImages.map((imagePath) {
+                    return Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(imagePath),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
                 // Gradient Overlay
                 Container(
@@ -177,8 +195,12 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                      ),Spacer(),
-                      Icon(Icons.chevron_right,color: Colors.white,)
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.chevron_right,
+                        color: Colors.white,
+                      )
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -200,26 +222,47 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  Text('Top 10 in india Today',style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10),
                   SizedBox(
-                    height: 180,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            height: 120,
-                            width: 120,
-                            margin: EdgeInsets.only(right: 5),
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(5)
-                            ),
-                          );
-                        },
-                        itemCount: 6,),
-                  )
+                    height: 20,
+                  ),
+                  CustomText(
+                    text: 'Asianet Shows',
+                  ),
+                  CustomHorizontalListView(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Top 10 in india Today',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  LanguageTabs(
+                    languages: [
+                      'All',
+                      'Hindi',
+                      'English',
+                      'Tamil',
+                      'Telugu',
+                      'Malayalam'
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CustomHorizontalListView(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomText(
+                    text: 'Popular Web Series',
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CustomHorizontalListView()
                 ],
               ),
             ),
