@@ -1,5 +1,6 @@
 import 'package:amazone_prime_clone/view/downloads/downloads.dart';
 import 'package:amazone_prime_clone/view/home_page.dart';
+import 'package:amazone_prime_clone/view/myspace/myspace.dart';
 import 'package:amazone_prime_clone/view/news/news.dart';
 import 'package:amazone_prime_clone/view/search_page/search.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,7 @@ class _HomepageState extends State<Bottom_navigation> {
     Search(),
     News(),
     Downloads(),
-    Center(
-      child: Text('My Space'),
-    )
+    MySpace()
   ];
 
   void onitem_tapped(int index) {
