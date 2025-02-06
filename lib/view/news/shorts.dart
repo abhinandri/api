@@ -1,8 +1,22 @@
-
+import 'package:amazone_prime_clone/api/api.dart';
+import 'package:amazone_prime_clone/models/movies.dart';
 import 'package:flutter/material.dart';
 
-class StreamingShowClone extends StatelessWidget {
+class StreamingShowClone extends StatefulWidget {
   const StreamingShowClone({super.key});
+
+  @override
+  State<StreamingShowClone> createState() => _StreamingShowCloneState();
+}
+
+class _StreamingShowCloneState extends State<StreamingShowClone> {
+  late Future<List<Movie>> PopularMovies;
+
+  @override
+  void initState() {
+    super.initState();
+    PopularMovies = Api().getPopularMovies();
+  }
 
   @override
   Widget build(BuildContext context) {

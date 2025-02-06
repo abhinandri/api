@@ -18,7 +18,6 @@ class LanguageTabs extends StatefulWidget {
     this.fontSize = 14,
     this.padding = 12,
     this.borderRadius = 8,
-    
   });
 
   @override
@@ -52,7 +51,7 @@ class _LanguageTabsState extends State<LanguageTabs> {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: widget.padding, vertical: 6),
-                  margin: const EdgeInsets.only(left: 4,right: 4),
+                  margin: const EdgeInsets.only(left: 4, right: 4),
                   decoration: BoxDecoration(
                     color: isSelected
                         ? widget.selectedColor
